@@ -23,12 +23,11 @@
                 select.addEventListener("change", function(){
                     var selectedOptions = select.querySelectorAll("option:checked");
                     if(selectedOptions.length < 3){
-                        alert("3つの項目を選択してください！");
+                        alert("3つの項目を選択してください");
                     }
-                    var select = document.querySelector("#myTags");
-                    var options = select.querySelectorAll("option");
-                    options[3].disabled = true;
                 });
+                var options = select.querySelectorAll("option");
+                options[3].disabled = true;
             </script>
         </div>
         <input type="submit" class="mt-4 btn btn-primary" value="送信">
