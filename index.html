@@ -23,14 +23,21 @@
                 <option value="tag8" style="color:black">tag8</option>
             </select>
             <script>
-                const select = document.getElementById("myTags");
-                const maxSelected = 3;
-
-                select.addEventListener("change", (event) => {
-                    if (event.target.selectedOptions.length > maxSelected) {
-                        event.target.options[event.target.selectedOptions.length-1].selected = false;
+                var select = document.querySelector("#myTags");
+                var options = select.querySelectorAll("option");
+                select.addEventListener("change", function() {
+                    if (select.selectedOptions.length >= 3) {
+                        for (var i = 0; i < select.options.length; i++) {
+                            if (!select.options[i].selected) {
+                                select.options[i].disabled = true;
+                            }
+                        }
+                    } else {
+                        for (var i = 0; i < select.options.length; i++) {
+                            select.options[i].disabled = false;
+                        }
                     }
-                });
+            });
             </script>
         </div>
         <br>
@@ -38,11 +45,11 @@
         <div id="message"></div>
 
         <script>
-        var var_select = document.querySelector("#myTags");
+        var select = document.querySelector("#myTags");
         var submitBtn = document.querySelector("#submitBtn");
         var message = document.querySelector("#message");
-        var_select.addEventListener("change", function() {
-            if (var_select.selectedOptions.length === 3) {
+        select.addEventListener("change", function() {
+            if (select.selectedOptions.length === 3) {
                 submitBtn.disabled = false;
                 message.innerHTML = "";
             } else {
