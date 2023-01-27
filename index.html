@@ -17,24 +17,17 @@
                 <option value="tag2" style="color:black">tag2</option>
                 <option value="tag3" style="color:black">tag3</option>
                 <option value="tag4" style="color:black">tag4</option>
+                <option value="tag5" style="color:black">tag5</option>
+                <option value="tag6" style="color:black">tag6</option>
+                <option value="tag7" style="color:black">tag7</option>
+                <option value="tag8" style="color:black">tag8</option>
             </select>
             <script>
                 var select = document.querySelector("#myTags");
                 var options = select.querySelectorAll("option");
                 select.addEventListener("change", function() {
-                    if (select.selectedOptions.length < 3) {
-                        alert("Please select at least 3 options.");
-                    } else {
-                        options[3].disabled = true;
-                    }
-                });
-                var select = document.querySelector("#mySelect");
-                var options = select.querySelectorAll("option");
-                select.addEventListener("change", function() {
                     if (select.selectedOptions.length >= 4) {
-                        for (var i = 3; i < options.length; i++) {
-                            options[i].selected = false;
-                        }
+                        options[options.length - 1].selected = false;
                     }
                 });
             </script>
