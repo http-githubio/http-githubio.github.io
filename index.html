@@ -26,13 +26,38 @@
                 var select = document.querySelector("#myTags");
                 var options = select.querySelectorAll("option");
                 select.addEventListener("change", function() {
-                    if (select.selectedOptions.length >= 4) {
-                        options[options.length - 1].selected = false;
+                    if (select.selectedOptions.length === 3) {
+                        for (var i = 0; i < select.options.length; i++) {
+                            if (!select.options[i].selected) {
+                                select.options[i].disabled = true;
+                            }
+                        }
+                    } else {
+                        for (var i = 0; i < select.options.length; i++) {
+                            select.options[i].disabled = false;
+                        }
                     }
-                });
+            });
             </script>
         </div>
-        <input type="submit" class="mt-4 btn btn-primary" value="送信">
+        <br>
+        <button id="submitBtn" disabled>送信</button>
+        <div id="message"></div>
+
+        <script>
+        var select = document.querySelector("#myTags");
+        var submitBtn = document.querySelector("#submitBtn");
+        var message = document.querySelector("#message");
+        select.addEventListener("change", function() {
+            if (select.selectedOptions.length === 3) {
+                submitBtn.disabled = false;
+                message.innerHTML = "";
+            } else {
+                submitBtn.disabled = true;
+                message.innerHTML = "合計3つ選択してください";
+            }
+        });
+        </script>
     </form>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
