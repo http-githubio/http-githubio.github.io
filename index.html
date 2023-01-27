@@ -28,6 +28,15 @@
                         options[3].disabled = true;
                     }
                 });
+                var select = document.querySelector("#mySelect");
+                var options = select.querySelectorAll("option");
+                select.addEventListener("change", function() {
+                    if (select.selectedOptions.length >= 4) {
+                        for (var i = 3; i < options.length; i++) {
+                            options[i].selected = false;
+                        }
+                    }
+                });
             </script>
         </div>
         <input type="submit" class="mt-4 btn btn-primary" value="送信">
@@ -70,8 +79,8 @@
 
         $(function () {
             $('form').submit(function () {
-                const tags    = $('input[tags="tags"]').val();
-                const msg = `${tags}}`;
+                const tags    = $('select[tags="tags"]').val();
+                const msg = `${tags}`;
                 sendText(msg);
                 return false;
             });
