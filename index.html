@@ -12,7 +12,7 @@
     <form class="w-75 mx-auto">
         <p class="mt-3">タグ</p>
         <div>
-            <select multiple name="tags" id="myTags" required>
+            <select multiple class="form-control" name="tags" id="myTags" required>
                 <option value="tag1" style="color:black">tag1</option>
                 <option value="tag2" style="color:black">tag2</option>
                 <option value="tag3" style="color:black">tag3</option>
@@ -23,33 +23,26 @@
                 <option value="tag8" style="color:black">tag8</option>
             </select>
             <script>
-                var select = document.querySelector("#myTags");
-                var options = select.querySelectorAll("option");
-                select.addEventListener("change", function() {
-                    if (select.selectedOptions.length === 3) {
-                        for (var i = 0; i < select.options.length; i++) {
-                            if (!select.options[i].selected) {
-                                select.options[i].disabled = true;
-                            }
-                        }
-                    } else {
-                        for (var i = 0; i < select.options.length; i++) {
-                            select.options[i].disabled = false;
-                        }
+                const select = document.getElementById("myTags");
+                const maxSelected = 3;
+
+                select.addEventListener("change", (event) => {
+                    if (event.target.selectedOptions.length > maxSelected) {
+                        event.target.options[event.target.selectedOptions.length-1].selected = false;
                     }
-            });
+                });
             </script>
         </div>
         <br>
-        <button id="submitBtn" disabled>送信</button>
+        <button class="mt-4 btn btn-primary" id="submitBtn" disabled>送信</button>
         <div id="message"></div>
 
         <script>
-        var select = document.querySelector("#myTags");
+        var var_select = document.querySelector("#myTags");
         var submitBtn = document.querySelector("#submitBtn");
         var message = document.querySelector("#message");
-        select.addEventListener("change", function() {
-            if (select.selectedOptions.length === 3) {
+        var_select.addEventListener("change", function() {
+            if (var_select.selectedOptions.length === 3) {
                 submitBtn.disabled = false;
                 message.innerHTML = "";
             } else {
