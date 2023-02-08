@@ -104,7 +104,7 @@
             $('form').submit(function () {
                 const tags    = $('#myTags').val();
                 const free_comment = $('#freeComment').val();
-                const msg = `タグ: ${tags}\nフリーコメント: ${udetate}`;
+                const msg = `タグ: ${tags}\nフリーコメント: ${free_comment}`;
                 sendText(msg);
                 return false;
             });
