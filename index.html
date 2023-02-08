@@ -41,6 +41,11 @@
             </script>
         </div>
         <br>
+        <p class="mt-3">フリーコメント</p>
+        <div>
+            <textarea class="form-control" id="freeComment"></textarea>
+        </div>
+        <br>
         <button class="mt-4 btn btn-primary" id="submitBtn" disabled>送信</button>
         <div id="message"></div>
 
@@ -54,7 +59,7 @@
                 message.innerHTML = "";
             } else {
                 submitBtn.disabled = true;
-                message.innerHTML = "合計3つ選択してください";
+                message.innerHTML = "必ず合計3つのタグを選択してください";
             }
         });
         </script>
@@ -97,8 +102,9 @@
 
         $(function () {
             $('form').submit(function () {
-                const tags    = $('select[tags="tags"]').val();
-                const msg = `${tags}`;
+                const tags    = $('#myTags').val();
+                const free_comment = $('#freeComment').val();
+                const msg = `タグ: ${tags}\nフリーコメント: ${udetate}`;
                 sendText(msg);
                 return false;
             });
